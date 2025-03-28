@@ -1,4 +1,4 @@
-import { Icon as LucidIcon, LucideProps } from "lucide-react";
+import { Icon as LucidIcon, LucideProps, ShoppingCart } from "lucide-react";
 
 export type Icon = typeof LucidIcon;
 
@@ -34,20 +34,7 @@ export const Icon = {
       </g>
     </svg>
   ),
-  cart: ({ ...props }: LucideProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="1em"
-      height="1em"
-      {...props}
-    >
-      <path
-        fill="currentColor"
-        d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2s-.9-2-2-2M1 2v2h2l3.6 7.59l-1.35 2.45c-.16.28-.25.61-.25.96c0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12l.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2s2-.9 2-2s-.9-2-2-2"
-      ></path>
-    </svg>
-  ),
+  cart: ShoppingCart,
   user: ({ ...props }: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +67,42 @@ export const Icon = {
         strokeWidth="1.5"
         d="M7.023 5.5a9 9 0 1 0 9.953 0M12 2v8"
         color="currentColor"
+      ></path>
+    </svg>
+  ),
+  search: ({ ...props }: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width="1em"
+      height="1em"
+      {...props}
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="m28 27l-7.5-7.5M5 13a9 9 0 1 0 18 0a9 9 0 0 0-18 0"
+      ></path>
+    </svg>
+  ),
+  heart: ({ ...props }: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      {...props}
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
       ></path>
     </svg>
   ),
