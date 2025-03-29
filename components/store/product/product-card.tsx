@@ -1,0 +1,61 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Icon } from "@/components/ui/icon";
+import { calcDiscountedPrice, priceFormat } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function ProductCard() {
+  const product = {
+    id: 6,
+    src: "/swiper/6-1.avif",
+    alt: "Image 6",
+    genre: "액션",
+    title: "몬스터 헌터 와일즈",
+    price: 84800,
+    discount: 25,
+  };
+  return (
+    <Card className="mt-10 py-0">
+      <CardContent className="px-0 mt-0">
+        <Link href={`/${product.id}`} className="relative">
+          <Image
+            src={product.src}
+            width={250}
+            height={326}
+            className="object-cover transition duration-300 ease-in-out hover:brightness-125"
+            priority
+            alt={product.title}
+          />
+        </Link>
+        <div className="p-2">
+          <p className="text-muted-foreground text-sm">{product.genre}</p>
+          <h2 className="font-bold text-md ">{product.title}</h2>
+          <div className="flex justify-between items-center mt-2">
+            <Badge className="bg-[#26bbff]">-25%</Badge>
+            <div>
+              <p className="text-muted-foreground line-through">
+                {priceFormat(product.price)}
+              </p>
+              <p>
+                {priceFormat(
+                  calcDiscountedPrice(product.price, product.discount)
+                )}
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-between items-center">
+            <Button className="w-[20%]">
+              <Icon.heart />
+            </Button>
+            <Button className="w-[75%]">
+              <Icon.cart />
+              장바구니
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

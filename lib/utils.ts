@@ -12,3 +12,12 @@ export function priceFormat(price: number) {
   });
   return formattedPrice;
 }
+
+export function calcDiscountedPrice(
+  originalPrice: number,
+  discountPercentage: number
+) {
+  const discountAmount = (originalPrice * discountPercentage) / 100;
+  const discountedPrice = originalPrice - discountAmount;
+  return discountedPrice;
+}
