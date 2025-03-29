@@ -11,9 +11,9 @@ export default function RootLayout({
       <div className="hidden xl:block xl:w-[15%] sticky top-0 h-screen">
         <Sidebar />
       </div>
-      <div className="w-full xl:w-[85%] flex flex-col px-5">
+      <div className="w-full xl:w-[85%] flex flex-col ">
         <Header />
-        <main>{children}</main>
+        <main className="px-5">{children}</main>
       </div>
     </div>
   );
