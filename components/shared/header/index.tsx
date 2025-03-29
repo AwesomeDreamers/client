@@ -10,16 +10,16 @@ export default function Header() {
   const pathname = usePathname();
   const NAVMENU = [
     {
-      title: "탐색",
+      title: "홈",
       href: "/",
     },
     {
-      title: "찾아보기",
+      title: "게임 목록",
       href: "/browse",
     },
   ];
   return (
-    <header className="h-14 flex justify-between items-center bg-[#101014] sticky top-0 right-0 px-5 py-10">
+    <header className="h-14 flex justify-between items-center bg-[#101014] z-[1000] sticky top-0 right-0 px-5 py-10">
       <div className="flex items-center">
         <Search />
         {NAVMENU.map((menu) => (
