@@ -19,7 +19,7 @@ export default function Header() {
     },
   ];
   return (
-    <header className="h-14 flex justify-between items-center bg-[#101014] sticky top-0 px-5 py-10">
+    <header className="h-14 flex justify-between items-center bg-[#101014] sticky top-0 right-0 px-5 py-10">
       <div className="flex items-center">
         <Search />
         {NAVMENU.map((menu) => (

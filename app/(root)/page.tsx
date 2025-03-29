@@ -1,5 +1,9 @@
-import { Button } from "@/components/ui/button";
+import Carousel from "@/components/store/carousel";
 
 export default function Home() {
-  return <Button>버튼</Button>;
+  return (
+    <main className="w-full">
+      <Carousel />
+    </main>
+  );
 }

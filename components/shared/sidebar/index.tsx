@@ -21,7 +21,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <section className="h-full flex flex-col items-center w-[325px] bg-[#121216] px-2">
+    <section className="h-full flex flex-col items-center max-w-[325px] bg-[#121216] px-2">
       <Logo />
       <ul className="w-full">
         {NAVMENU.map((menu) => (

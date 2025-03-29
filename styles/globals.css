@@ -42,6 +42,28 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* 기본 progress-bar 스타일 */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: calc(0.25rem + 4px);
+  background-color: #404044 !important;
+  animation: swiper-progress 7s linear; /* autoplay delay와 동일한 속도 */
+  animation-fill-mode: forwards;
+}
+
+@keyframes swiper-progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 :root {
   --background: hsl(240 11.11% 7.06%);
   --foreground: hsl(0 0% 98%);

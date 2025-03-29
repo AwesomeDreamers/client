@@ -8,10 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex w-full h-screen">
-      <div className="w-[15%] sticky top-0 left-0 h-screen">
+      <div className="hidden xl:block xl:w-[15%] sticky top-0 left-0 h-screen">
         <Sidebar />
       </div>
-      <div className="w-[85%] flex flex-col px-5">
+      <div className="w-full xl:w-[85%] flex flex-col px-5">
         <Header />
         <main>{children}</main>
       </div>
