@@ -138,6 +138,23 @@
   transform: scale(0);
 }
 
+/* 스크롤바 전체 */
+::-webkit-scrollbar {
+  width: 11px;
+  background: transparent;
+  padding-left: 1px;
+}
+
+/* 스크롤바 핸들 */
+::-webkit-scrollbar-thumb {
+  background-color: hsl(240 10% 3.9%);
+  opacity: 0.5;
+  border-radius: 10px;
+  z-index: 12;
+  /* border: 4px solid rgba(0, 0, 0, 0); */
+  background-clip: padding-box;
+}
+
 :root {
   --background: hsl(240 11.11% 7.06%);
   --foreground: hsl(0 0% 98%);
