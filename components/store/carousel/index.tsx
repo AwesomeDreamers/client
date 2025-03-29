@@ -1,25 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
-import Desktop from "./carousel/desktop";
-import Mobile from "./carousel/mobile";
+import Desktop from "./desktop";
+import Mobile from "./mobile";
 
 export default function Carousel() {
-  const [isXl, setIsXl] = useState(false);
+  const [isMd, setIsMd] = useState(false);
 
-  // 화면 크기 감지
   useEffect(() => {
     const handleResize = () => {
-      setIsXl(window.innerWidth >= 756);
+      setIsMd(window.innerWidth >= 756);
     };
 
-    handleResize(); // 초기 실행
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <section className="flex flex-col lg:flex-row w-full h-auto">
-      {isXl ? <Desktop /> : <Mobile />}
+      {isMd ? <Desktop /> : <Mobile />}
     </section>
   );
 }
