@@ -161,6 +161,7 @@ export function GenreCarousel() {
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       }}
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="w-full mt-10"
