@@ -4,6 +4,7 @@ import user from "@/public/images/user.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CartButton } from "./cart/cart-button";
 import Search from "./search";
 
 export default function Header() {
@@ -40,12 +41,7 @@ export default function Header() {
         <Link href="/wishlist">
           <Icon.heart className="size-7 text-muted-foreground hover:text-foreground mr-7" />
         </Link>
-        <Link href="/cart" className="relative ">
-          <Icon.cart className="size-7 text-muted-foreground hover:text-foreground mr-7" />
-          <span className="absolute top-0 right-6 bg-[red] size-4 rounded-full text-xs text-center">
-            0
-          </span>
-        </Link>
+        <CartButton />
         <div className="relative size-8">
           <Image
             src={user}

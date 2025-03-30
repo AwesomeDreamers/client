@@ -1,4 +1,11 @@
-import { Icon as LucidIcon, LucideProps, ShoppingCart } from "lucide-react";
+import {
+  Icon as LucidIcon,
+  LucideProps,
+  Minus,
+  Plus,
+  ShoppingCart,
+  Trash2,
+} from "lucide-react";
 
 export type Icon = typeof LucidIcon;
 
@@ -128,6 +135,9 @@ export const Icon = {
       <path fill="currentColor" d="M6 19h4V5H6zm8-14v14h4V5z"></path>
     </svg>
   ),
+  plus: Plus,
+  minus: Minus,
+  trash: Trash2,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
