@@ -12,14 +12,14 @@ export default function Sidebar() {
 
   const NAVMENU = [
     {
-      title: "스토어",
-      icon: Icon.store,
-      href: "/",
-    },
-    {
-      title: "주문내역",
+      title: "구매내역",
       icon: Icon.order,
       href: "/order",
+    },
+    {
+      title: "마이페이지",
+      icon: Icon.user,
+      href: "/mypage",
     },
   ];
 
@@ -30,26 +30,30 @@ export default function Sidebar() {
         <SidebarSkeleton />
       ) : (
         <ul className="w-full">
-          {NAVMENU.map((menu) => (
-            <Link href={menu.href} key={menu.title}>
-              <li
-                className={`${sidebarMenu} ${
-                  pathname === menu.href ? "bg-[#28282c]" : ""
-                }`}
-              >
-                <menu.icon className="size-5 mr-5" />
-                {menu.title}
-              </li>
-            </Link>
-          ))}
+          <Link href={"/"}>
+            <li
+              className={`${sidebarMenu} ${
+                pathname === "/" ? "bg-[#28282c]" : ""
+              }`}
+            >
+              <Icon.store className="size-5 mr-5" />
+              스토어
+            </li>
+          </Link>
           {status === "authenticated" ? (
             <>
-              <Link href={"/mypage"}>
-                <li className={`${sidebarMenu}`}>
-                  <Icon.user className="size-5 mr-5" />
-                  마이페이지
-                </li>
-              </Link>
+              {NAVMENU.map((menu) => (
+                <Link href={menu.href} key={menu.title}>
+                  <li
+                    className={`${sidebarMenu} ${
+                      pathname === menu.href ? "bg-[#28282c]" : ""
+                    }`}
+                  >
+                    <menu.icon className="size-5 mr-5" />
+                    {menu.title}
+                  </li>
+                </Link>
+              ))}
               <Link href={"/logout"}>
                 <li className={`${sidebarMenu}`}>
                   <Icon.logout className="size-5 mr-5" />
