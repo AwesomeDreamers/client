@@ -1,10 +1,12 @@
 "use client";
 import { Icon } from "@/components/ui/icon";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./logo";
 
 export default function Sidebar() {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
 
   const NAVMENU = [
@@ -36,25 +38,29 @@ export default function Sidebar() {
             </li>
           </Link>
         ))}
-        <Link href={"/login"}>
-          <li className={`${sidebarMenu}`}>
-            <Icon.user className="size-5 mr-5" />
-            로그인
-          </li>
-        </Link>
-        {/* 로그인 했을 경우 */}
-        {/* <Link href={"/mypage"}>
-          <li className={`${sidebarMenu}`}>
-            <Icon.user className="size-5 mr-5" />
-            마이페이지
-          </li>
-        </Link>
-        <Link href={"/logout"}>
-          <li className={`${sidebarMenu}`}>
-            <Icon.logout className="size-5 mr-5" />
-            로그아웃
-          </li>
-        </Link> */}
+        {status === "authenticated" ? (
+          <>
+            <Link href={"/mypage"}>
+              <li className={`${sidebarMenu}`}>
+                <Icon.user className="size-5 mr-5" />
+                마이페이지
+              </li>
+            </Link>
+            <Link href={"/logout"}>
+              <li className={`${sidebarMenu}`}>
+                <Icon.logout className="size-5 mr-5" />
+                로그아웃
+              </li>
+            </Link>
+          </>
+        ) : (
+          <Link href={"/login"}>
+            <li className={`${sidebarMenu}`}>
+              <Icon.user className="size-5 mr-5" />
+              로그인
+            </li>
+          </Link>
+        )}
       </ul>
     </section>
   );

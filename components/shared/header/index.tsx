@@ -1,6 +1,7 @@
 "use client";
 import { Icon } from "@/components/ui/icon";
-import user from "@/public/images/user.jpg";
+import noUser from "@/public/images/noProfileImage.jpg";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,6 +9,7 @@ import { CartButton } from "./cart/cart-button";
 import Search from "./search";
 
 export default function Header() {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
   const NAVMENU = [
     {
@@ -42,14 +44,20 @@ export default function Header() {
           <Icon.heart className="size-7 text-muted-foreground hover:text-foreground mr-7" />
         </Link>
         <CartButton />
-        <div className="relative size-8">
-          <Image
-            src={user}
-            className="rounded-full object-cover"
-            fill
-            alt={"user"}
-          />
-        </div>
+        {status === "authenticated" && (
+          <div className="relative size-8">
+            <Image
+              src={
+                session?.member.profile_url
+                  ? session?.member.profile_url
+                  : noUser
+              }
+              className="rounded-full object-cover"
+              fill
+              alt={"user"}
+            />
+          </div>
+        )}
       </div>
     </header>
   );

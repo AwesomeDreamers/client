@@ -3,12 +3,36 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/ui/submit-button";
+import { register } from "@/lib/actions/auth.actions";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
+  const [state, action] = useActionState(register, undefined);
+  const router = useRouter();
+  useEffect(() => {
+    const errorFields = ["name", "email", "password", "confirmPassword"];
+
+    errorFields.forEach((field) => {
+      const errorMessage = (
+        state?.error as Record<string, string[]> | undefined
+      )?.[field]?.[0];
+      if (errorMessage) {
+        toast.error(errorMessage);
+      }
+    });
+  }, [state?.error]);
+
+  useEffect(() => {
+    if (state?.status === 201) {
+      toast.success(state.message);
+      router.push("/login");
+    }
+  }, [state?.status]);
   return (
-    <form>
-      <input type="hidden" name="callbackUrl" />
+    <form action={action}>
       <div className="space-y-6">
         <div>
           <Label htmlFor="email">이름</Label>

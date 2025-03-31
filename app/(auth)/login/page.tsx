@@ -7,7 +7,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "로그인",
 };
-
+console.log("SERVER_URL", process.env.SERVER_URL);
+console.log("NEXTAUTH_SECRET", process.env.NEXTAUTH_SECRET);
+console.log("NEXTAUTH_JWT_SECRET", process.env.NEXTAUTH_JWT_SECRET);
+console.log("NEXTAUTH_URL", process.env.NEXTAUTH_URL);
 const Login = async () => {
   return (
     <div className="w-full max-w-md mx-auto">

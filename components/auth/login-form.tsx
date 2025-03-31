@@ -3,11 +3,38 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/ui/submit-button";
+import { validateLoginForm } from "@/lib/actions/auth.actions";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
+  const router = useRouter();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    const validationResult = await validateLoginForm(formData);
+    const email = validationResult?.data?.email;
+    const password = validationResult?.data?.password;
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    if (result?.status === 401) {
+      toast.error("이메일 또는 비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    if (result?.status === 200) {
+      router.push("/");
+    }
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-6">
         <div>
           <Label htmlFor="email" className="mb-2">

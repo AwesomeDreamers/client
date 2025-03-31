@@ -1,3 +1,4 @@
+import Provider from "@/components/shared/provider";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable} font-pretendard`}>
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

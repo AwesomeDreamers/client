@@ -23,7 +23,7 @@ export function SubmitButton({
   return (
     <Button
       disabled={pending}
-      className={`${className ? className : "w-full"}`}
+      className={`${className ? className : "w-full"} cursor-pointer`}
       variant={variant}
     >
       {pending ? "로딩중" : children}
