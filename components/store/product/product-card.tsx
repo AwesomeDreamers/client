@@ -17,15 +17,17 @@ export default function ProductCard() {
     discount: 25,
   };
   return (
-    <Card className="mt-10 py-0">
+    <Card className="mt-10 py-0 border-none bg-transparent">
       <CardContent className="px-0 mt-0">
-        <Link href={`/${product.id}`} className="relative">
+        <Link
+          href={`/${product.id}`}
+          className="block w-[250px] h-[326px] overflow-hidden rounded-2xl"
+        >
           <Image
             src={product.src}
             width={250}
             height={326}
-            className="object-cover transition duration-300 ease-in-out hover:brightness-125"
-            priority
+            className="transition duration-300 ease-in-out hover:brightness-125 rounded-2xl"
             alt={product.title}
           />
         </Link>
@@ -46,12 +48,11 @@ export default function ProductCard() {
             </div>
           </div>
           <div className="flex justify-between items-center">
-            <Button className="w-[20%]">
+            <Button variant={"outline"} className="w-[20%] cursor-pointer">
               <Icon.heart />
             </Button>
-            <Button className="w-[75%]">
+            <Button variant={"outline"} className="w-[75%] cursor-pointer">
               <Icon.cart />
-              장바구니
             </Button>
           </div>
         </div>

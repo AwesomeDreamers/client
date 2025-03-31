@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./logo";
+import SidebarSkeleton from "./skeleton";
 
 export default function Sidebar() {
   const { data: session, status } = useSession();
@@ -25,43 +26,47 @@ export default function Sidebar() {
   return (
     <section className="h-full flex flex-col items-center max-w-[325px] bg-[#121216] px-2">
       <Logo />
-      <ul className="w-full">
-        {NAVMENU.map((menu) => (
-          <Link href={menu.href} key={menu.title}>
-            <li
-              className={`${sidebarMenu} ${
-                pathname === menu.href ? "bg-[#28282c]" : ""
-              }`}
-            >
-              <menu.icon className="size-5 mr-5" />
-              {menu.title}
-            </li>
-          </Link>
-        ))}
-        {status === "authenticated" ? (
-          <>
-            <Link href={"/mypage"}>
+      {status === "loading" ? (
+        <SidebarSkeleton />
+      ) : (
+        <ul className="w-full">
+          {NAVMENU.map((menu) => (
+            <Link href={menu.href} key={menu.title}>
+              <li
+                className={`${sidebarMenu} ${
+                  pathname === menu.href ? "bg-[#28282c]" : ""
+                }`}
+              >
+                <menu.icon className="size-5 mr-5" />
+                {menu.title}
+              </li>
+            </Link>
+          ))}
+          {status === "authenticated" ? (
+            <>
+              <Link href={"/mypage"}>
+                <li className={`${sidebarMenu}`}>
+                  <Icon.user className="size-5 mr-5" />
+                  마이페이지
+                </li>
+              </Link>
+              <Link href={"/logout"}>
+                <li className={`${sidebarMenu}`}>
+                  <Icon.logout className="size-5 mr-5" />
+                  로그아웃
+                </li>
+              </Link>
+            </>
+          ) : (
+            <Link href={"/login"}>
               <li className={`${sidebarMenu}`}>
                 <Icon.user className="size-5 mr-5" />
-                마이페이지
+                로그인
               </li>
             </Link>
-            <Link href={"/logout"}>
-              <li className={`${sidebarMenu}`}>
-                <Icon.logout className="size-5 mr-5" />
-                로그아웃
-              </li>
-            </Link>
-          </>
-        ) : (
-          <Link href={"/login"}>
-            <li className={`${sidebarMenu}`}>
-              <Icon.user className="size-5 mr-5" />
-              로그인
-            </li>
-          </Link>
-        )}
-      </ul>
+          )}
+        </ul>
+      )}
     </section>
   );
 }

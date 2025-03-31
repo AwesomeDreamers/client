@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CartButton } from "./cart/cart-button";
 import Search from "./search";
+import HeaderSkeleton from "./skeleton";
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -39,26 +40,30 @@ export default function Header() {
           </Link>
         ))}
       </div>
-      <div className="flex items-center">
-        <Link href="/wishlist">
-          <Icon.heart className="size-7 text-muted-foreground hover:text-foreground mr-7" />
-        </Link>
-        <CartButton />
-        {status === "authenticated" && (
-          <div className="relative size-8">
-            <Image
-              src={
-                session?.member.profile_url
-                  ? session?.member.profile_url
-                  : noUser
-              }
-              className="rounded-full object-cover"
-              fill
-              alt={"user"}
-            />
-          </div>
-        )}
-      </div>
+      {status == "loading" ? (
+        <HeaderSkeleton />
+      ) : (
+        <div className="flex items-center">
+          <Link href="/wishlist">
+            <Icon.heart className="size-7 text-muted-foreground hover:text-foreground mr-7" />
+          </Link>
+          <CartButton />
+          {status === "authenticated" && (
+            <div className="relative size-8">
+              <Image
+                src={
+                  session?.member.profile_url
+                    ? session?.member.profile_url
+                    : noUser
+                }
+                className="rounded-full object-cover"
+                fill
+                alt={"user"}
+              />
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }
