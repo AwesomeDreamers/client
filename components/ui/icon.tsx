@@ -1,4 +1,7 @@
 import {
+  ChevronDown,
+  ChevronUp,
+  ListFilter,
   Icon as LucidIcon,
   LucideProps,
   Minus,
@@ -138,6 +141,9 @@ export const Icon = {
   plus: Plus,
   minus: Minus,
   trash: Trash2,
+  chevronUp: ChevronUp,
+  chevronDown: ChevronDown,
+  filter: ListFilter,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
