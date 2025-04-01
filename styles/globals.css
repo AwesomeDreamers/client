@@ -155,6 +155,11 @@
   background-clip: padding-box;
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 :root {
   --background: hsl(240 11.11% 7.06%);
   --foreground: hsl(0 0% 98%);

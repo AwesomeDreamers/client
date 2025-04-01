@@ -3,11 +3,15 @@ import { Icon } from "@/components/ui/icon";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import Logo from "./logo";
 import SidebarSkeleton from "./skeleton";
 
 export default function Sidebar() {
   const { data: session, status } = useSession();
+  const [isGenreOpen, setIsGenreOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
   const pathname = usePathname();
 
   const NAVMENU = [
@@ -24,7 +28,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <section className="h-full flex flex-col items-center max-w-[325px] bg-[#121216] px-2">
+    <section className="h-full flex flex-col items-center max-w-[325px] bg-[#121216] px-2 overflow-auto scrollbar-hide z-[1200]">
       <Logo />
       {status === "loading" ? (
         <SidebarSkeleton />

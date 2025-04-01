@@ -5,7 +5,7 @@ interface ProductWrapProps {
 
 export default function ProductWrap({ title, children }: ProductWrapProps) {
   return (
-    <section className="my-12 ">
+    <section className="my-12 w-full">
       <div className="relative block-title">
         <strong
           className="text-4xl"
@@ -16,7 +16,7 @@ export default function ProductWrap({ title, children }: ProductWrapProps) {
           {title}
         </strong>
       </div>
-      {children}
+      <div className="w-full">{children}</div>
     </section>
   );
 }

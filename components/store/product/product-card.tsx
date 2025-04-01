@@ -17,7 +17,7 @@ export default function ProductCard() {
     discount: 25,
   };
   return (
-    <Card className="mt-10 py-0 border-none bg-transparent">
+    <Card className="mt-10 py-0 border-none w-[250] bg-transparent">
       <CardContent className="px-0 mt-0">
         <Link
           href={`/${product.id}`}
